@@ -1,0 +1,11 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/.vs/AricTest/CopilotIndices/17.14.670.39694
+/.vs/AricTest/DesignTimeBuild
+/.vs/AricTest/FileContentIndex
+/.vs/AricTest/v17
+/.vs
+/AricSortedSet/bin/Debug/net8.0
+/AricSortedSet/obj
