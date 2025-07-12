@@ -72,8 +72,9 @@ namespace AricTest.Services
 
                 var lowerView = _leaderboard.GetViewBetween(_leaderboard.Min, customer);
                 int index = lowerView.Count - 1;
-                int start = Math.Max(0, index - low);
-                int end = Math.Min(_leaderboard.Count - 1, index + high);
+
+                int start = Math.Max(0, index - high);
+                int end = Math.Min(_leaderboard.Count - 1, index + low);
                 int takeCount = end - start + 1;
 
                 var result = new List<CustomerDto>(takeCount);
