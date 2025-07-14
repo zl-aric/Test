@@ -9,3 +9,5 @@
 /.vs
 /AricSortedSet/bin/Debug/net8.0
 /AricSortedSet/obj
+/AricSkipList/bin/Debug/net8.0
+/AricSkipList/obj
