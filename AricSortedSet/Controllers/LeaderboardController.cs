@@ -1,7 +1,7 @@
-using AricTest.Services;
+using AricSortedSet.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AricTest.Controllers
+namespace AricSortedSet.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -15,11 +15,11 @@ namespace AricTest.Controllers
         }
 
         [HttpPost("customer/{customerid}/score/{score}")]
-        public IActionResult UpdateScore(long customerid, decimal score)
+        public IActionResult AddOrUpdate(long customerid, decimal score)
         {
             try
             {
-                var updatedScore = _leaderboardService.UpdateScore(customerid, score);
+                var updatedScore = _leaderboardService.AddOrUpdate(customerid, score);
                 return Ok(updatedScore);
             }
             catch (ArgumentOutOfRangeException ex)

@@ -1,4 +1,4 @@
-﻿namespace AricTest.Enities
+﻿namespace AricSortedSet.Enities
 {
     public class Customer : IComparable<Customer>
     {
