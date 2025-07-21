@@ -88,10 +88,7 @@
             foreach (var (start, end) in randomRanges)
             {
                 var rangeResults = leaderboardService.GetByRank(start, end);
-                if (leaderboardService.SortedCount < start)
-                    realSize = 0;
-                else
-                    realSize = Math.Min(end - start + 1, leaderboardService.SortedCount - start + 1);
+                realSize = Math.Min(end, leaderboardService.SortedCount) - start + 1;
                 Assert.AreEqual(realSize, rangeResults.Count, $"范围{start}-{end}结果数量不正确");
 
                 for (int i = 0; i < rangeResults.Count; i++)
