@@ -1,5 +1,4 @@
-﻿using AricSkipList.Enities;
-using System.Collections.Concurrent;
+﻿using AricShared;
 
 namespace AricSkipList.Services
 {
@@ -50,7 +49,7 @@ namespace AricSkipList.Services
             {
                 //如果是最高层，rankArray[i] = 0，否则 rankArray[i] = rankArray[i + 1] 继承上一层的排名
                 rankArray[i] = i == _currentLevel - 1 ? 0 : rankArray[i + 1];
-                while (current.Forward[i] != null && current.Forward[i].CompareTo(node) < 0)
+                while (current.Forward[i] != null && current.Forward[i].Value.CompareTo(node.Value) < 0)
                 {
                     rankArray[i] += current.Span[i];
                     current = current.Forward[i];
@@ -99,7 +98,7 @@ namespace AricSkipList.Services
             // 从最高层开始查找节点
             for (int i = _currentLevel - 1; i >= 0; i--)
             {
-                while (current.Forward[i] != null && current.Forward[i].CompareTo(node) < 0)
+                while (current.Forward[i] != null && current.Forward[i].Value.CompareTo(node.Value) < 0)
                 {
                     current = current.Forward[i];
                 }
@@ -274,7 +273,7 @@ namespace AricSkipList.Services
             {
                 while (current.Forward[i] != null && current.Forward[i].Value.CompareTo(customer) <= 0)
                 {
-                    if (current.Forward[i].Value == customer)
+                    if (current.Forward[i].Value.Equals(customer))
                     {
                         rank += current.Span[i];
                         return rank;

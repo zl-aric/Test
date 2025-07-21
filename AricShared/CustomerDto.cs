@@ -1,4 +1,4 @@
-﻿namespace AricSkipList.Enities
+﻿namespace AricShared
 {
     public class CustomerDto
     {

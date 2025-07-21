@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AricSkipListTests", "AricSk
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AricSortedSetTests", "AricSortedSetTests\AricSortedSetTests.csproj", "{D8D45863-82D5-48D5-8C6D-D3C7A85E93E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AricShared", "AricShared\AricShared.csproj", "{5D3F815D-3205-456C-8D82-FF0A5BA15918}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D8D45863-82D5-48D5-8C6D-D3C7A85E93E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8D45863-82D5-48D5-8C6D-D3C7A85E93E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8D45863-82D5-48D5-8C6D-D3C7A85E93E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D3F815D-3205-456C-8D82-FF0A5BA15918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D3F815D-3205-456C-8D82-FF0A5BA15918}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D3F815D-3205-456C-8D82-FF0A5BA15918}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D3F815D-3205-456C-8D82-FF0A5BA15918}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
