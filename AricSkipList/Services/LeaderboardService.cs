@@ -1,4 +1,5 @@
 ﻿using AricSkipList.Enities;
+using System.Collections.Concurrent;
 
 namespace AricSkipList.Services
 {
@@ -6,10 +7,10 @@ namespace AricSkipList.Services
     {
         private const int MaxLevel = 32; // 最大层数
         private const double Probability = 0.5; // 晋升概率
-        private readonly Random _random = new();
+        private readonly Random _random = Random.Shared;
         private readonly SkipListNode<Customer> _head;
         private int _currentLevel = 1;
-        private readonly ReaderWriterLockSlim _lock = new();
+        private readonly FairReaderWriterLock _lock = new();
         private readonly Dictionary<long, Customer> _customerMap = [];
         private int _count = 0; // 总节点数
 
@@ -204,7 +205,6 @@ namespace AricSkipList.Services
             var result = new List<CustomerDto>();
             var current = _head;
             int currentRank = 0;
-            int count = 0;
 
             // 快速定位到起始位置
             for (int i = _currentLevel - 1; i >= 0; i--)
@@ -231,7 +231,6 @@ namespace AricSkipList.Services
                 });
                 current = current.Forward[0];
                 currentRank++;
-                count++;
             }
 
             return result;
