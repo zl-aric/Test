@@ -158,7 +158,6 @@ namespace AricSkipList.Services
                         RemoveNode(new SkipListNode<Customer>(existingCustomer, RandomLevel()));
 
                     existingCustomer.Score += scoreChange;
-                    CheckScore(existingCustomer.Score);
 
                     if (existingCustomer.Score > 0)
                         InsertNode(new SkipListNode<Customer>(existingCustomer, RandomLevel()));
@@ -198,7 +197,7 @@ namespace AricSkipList.Services
 
         private List<CustomerDto> GetByRankInternal(int startRank, int endRank)
         {
-            if (startRank < 1 || endRank < startRank)
+            if (startRank < 1 || endRank < startRank || startRank > SortedCount)
                 throw new ArgumentException("Invalid rank range");
 
 

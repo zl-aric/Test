@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AricSortedSetTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ede56e0b17d0fe2857aa006ef5124442af161809")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77a02913a95130d703e7e6723bd8c550b4805da1")]
 [assembly: System.Reflection.AssemblyProductAttribute("AricSortedSetTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AricSortedSetTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

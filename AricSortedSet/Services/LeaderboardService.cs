@@ -31,7 +31,6 @@ namespace AricSortedSet.Services
                         _leaderboard.Remove(customer);
 
                     customer.Score += scoreChange;
-                    CheckScore(customer.Score);
 
                     if (customer.Score > 0)
                         _leaderboard.Add(customer);
@@ -56,13 +55,13 @@ namespace AricSortedSet.Services
             _lock.EnterReadLock();
             try
             {
-                if (startRank < 1 || endRank < startRank)
+                if (startRank < 1 || endRank < startRank || startRank > SortedCount)
                     throw new ArgumentException("Invalid rank range");
 
-                var takeCount = endRank - startRank + 1;
+                var takeCount = Math.Min(SortedCount, endRank) - startRank + 1;
                 var result = new List<CustomerDto>(takeCount);
                 using var enumerator = _leaderboard.GetEnumerator();
-                for (int i = 0; i < startRank && enumerator.MoveNext(); i++) ;
+                for (int i = 1; i < startRank && enumerator.MoveNext(); i++) ;
                 for (int i = 0; i < takeCount && enumerator.MoveNext(); i++)
                 {
                     var c = enumerator.Current;

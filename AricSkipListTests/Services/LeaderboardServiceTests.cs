@@ -13,8 +13,6 @@
             Assert.AreEqual(_leaderboardService.AddOrUpdate(1, 20), 40);
             Assert.AreEqual(_leaderboardService.AddOrUpdate(1, 100), 140);
             Assert.AreEqual(_leaderboardService.AddOrUpdate(1, -20), 120);
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => _leaderboardService.AddOrUpdate(1, 900));
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => _leaderboardService.AddOrUpdate(1, -1200));
         }
 
 
@@ -83,17 +81,14 @@
             var randomRanges = new[]
             {
                 (1, 10),
-                (count/2, count/2 + 100),
-                (count - 50, count)
+                (leaderboardService.SortedCount/2, leaderboardService.SortedCount/2 + 100),
+                (leaderboardService.SortedCount - 50, leaderboardService.SortedCount)
             };
 
             foreach (var (start, end) in randomRanges)
             {
                 var rangeResults = leaderboardService.GetByRank(start, end);
-                if (leaderboardService.SortedCount < start)
-                    realSize = 0;
-                else
-                    realSize = Math.Min(end - start + 1, leaderboardService.SortedCount - start + 1);
+                realSize = Math.Min(end - start + 1, leaderboardService.SortedCount - start + 1);
                 Assert.AreEqual(realSize, rangeResults.Count, $"范围{start}-{end}结果数量不正确");
 
                 for (int i = 0; i < rangeResults.Count; i++)

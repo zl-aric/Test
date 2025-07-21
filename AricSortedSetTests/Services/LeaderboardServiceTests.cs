@@ -13,8 +13,6 @@
             Assert.AreEqual(_leaderboardService.AddOrUpdate(1, 20), 40);
             Assert.AreEqual(_leaderboardService.AddOrUpdate(1, 100), 140);
             Assert.AreEqual(_leaderboardService.AddOrUpdate(1, -20), 120);
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => _leaderboardService.AddOrUpdate(1, 900));
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => _leaderboardService.AddOrUpdate(1, -1200));
         }
 
 
@@ -83,8 +81,8 @@
             var randomRanges = new[]
             {
                 (1, 10),
-                (count/2, count/2 + 100),
-                (count - 50, count)
+                (leaderboardService.SortedCount/2, leaderboardService.SortedCount/2 + 100),
+                (leaderboardService.SortedCount - 50, leaderboardService.SortedCount)
             };
 
             foreach (var (start, end) in randomRanges)
