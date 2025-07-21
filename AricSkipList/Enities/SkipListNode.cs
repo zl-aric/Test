@@ -1,29 +1,34 @@
 ﻿namespace AricSkipList.Enities
 {
-    public class SkipListNode<T> where T : IComparable<T>
+    public class SkipListNode<T> : IComparable<SkipListNode<T>>
+        where T : IComparable<T>
     {
         public T Value { get; set; }
 
         public SkipListNode<T>[] Forward { get; set; }
         public int[] Span { get; set; }
 
-        public readonly object NodeLock = new();
-        public readonly int Level;
-
         public SkipListNode(T value, int level)
         {
             Value = value;
             Forward = new SkipListNode<T>[level];
             Span = new int[level];
-            Level = level;
         }
 
-        public SkipListNode<T> GetForward(int level) => Volatile.Read(ref Forward[level]);
+        public int CompareTo(SkipListNode<T>? other)
+        {
+            if (other == null) return 1;
+            return Value.CompareTo(other.Value);
+        }
 
-        public void SetForward(int level, SkipListNode<T> node) => Volatile.Write(ref Forward[level], node);
+        public override bool Equals(object? obj)
+        {
+            return obj is SkipListNode<T> node && Value.Equals(node.Value);
+        }
 
-        public int GetSpan(int level) => Volatile.Read(ref Span[level]);
-
-        public void SetSpan(int level, int value) => Volatile.Write(ref Span[level], value);
+        public override int GetHashCode()
+        {
+            return Value.GetHashCode();
+        }
     }
 }
